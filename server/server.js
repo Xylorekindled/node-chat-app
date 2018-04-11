@@ -17,9 +17,8 @@ io.on('connection', (socket) => {
 
     socket.on('createMessage', (message) => {
         console.log('createMessage: ', message);
+        io.emit('newMessage', { from: message.from, text: message.text, createdAt: new Date().getTime() });
     });
-
-    socket.emit('newMessage', {from:'Me', text: 'Hello', createdAt: new Date().getFullYear()});
 
     socket.on('disconnect', (socket) => {
         console.log('Disconnected from client');
