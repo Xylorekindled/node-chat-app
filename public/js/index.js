@@ -10,16 +10,21 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function (message) {
     
+    var formatedTime = moment(message.createdAt).format('h: mm a');
+
     var li = jQuery('<li></li>');
-    li.text(`${message.from}: ${message.text}`);
+    li.text(`${message.from} ${formatedTime}: ${message.text}`);
 
     jQuery('#messages').append(li);
 });
 
-socket.on('newLocationMessage', function (position) {
-    var image = jQuery(`<img src="${position.url}"/>`);
+socket.on('newLocationMessage', function (position, coords) {
+    var clickMapString = `http://maps.google.com/maps?q=loc:${coords.lat},${coords.lon}&z=18`
+    var image = jQuery(`<br/><a href="${clickMapString}" target="_blank"><img src="${position.url}"/></a><br/>`);
 
+    var formatedTime = moment(position.createdAt).format('h: mm a');
     var li = jQuery('<li></li>');
+    li.text(`${position.from}: ${formatedTime}`);
     li.append(image);
 
     jQuery('#messages').append(li);

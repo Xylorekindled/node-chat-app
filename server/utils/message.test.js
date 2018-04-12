@@ -9,10 +9,8 @@ describe('generateMessage', () => {
         var text = 'Some Message';
         var message = generateMessage(from, text);
 
-        expect(message.from).toInclude({
-            from,
-            text
-        })
+        console.log(message);
+        expect(message).toInclude({from, text});
 
         // assert createdAt is Number
         expect(message.createdAt).toBeA('number');
