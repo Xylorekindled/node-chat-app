@@ -44,17 +44,21 @@ socket.on('newLocationMessage', function (position, coords) {
     jQuery('#messages').append(html);
 });
 
+
 jQuery('#message-form').on('submit', function(e) {
     e.preventDefault();
 
     var msgText = jQuery('[name=message]');
 
-    socket.emit('createMessage', {
-        from: 'User',
-        text: msgText.val(),
-    }, function() {
-        msgText.val('');
-    });
+    if(msgText.val().length !== 0)
+    {
+        socket.emit('createMessage', {
+            from: 'User',
+            text: msgText.val(),
+        }, function() {
+            msgText.val('');
+        });
+    }
 });
 
 var locationButton = jQuery('#send-location');

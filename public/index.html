@@ -9,6 +9,14 @@
 </head>
 <body class="chat">
 
+    <style>
+        body
+        {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+
     <div class="chat__sidebar">
         <h3>People</h3>
         <div id="users"></div>
@@ -20,7 +28,7 @@
         <div class="chat__footer">
             <form id="message-form">
                 <input name="message" type="text" placeholder="Message" autofocus autocomplete="off">
-                <button>Send</button>
+                <button id="snd-btn">Send</button>
             </form>
             <button id="send-location">Send Location</button>
         </div>
