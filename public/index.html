@@ -7,14 +7,35 @@
     <title>Chat App</title>
 </head>
 <body>
+    <style>
+        img
+        {
+            border: 4px solid green;
+            border-radius: 25px;
+        }
+
+        li
+        {
+            border: 2px solid gray;
+            padding: 5px 10px 5px 10px;
+            margin: 10px 0 10px 0;
+            border-radius: 25px;
+            width: fit-content;
+        }
+    </style>
+
     <p>Welcome to Chat App</p>
 
     <ul id="messages"></ul>
 
+    
     <form id="message-form">
         <input name="message" type="text" placeholder="Message">
         <button>Send</button>
     </form>
+    <button id="send-location">Send Location</button>
+
+    
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/libs/jquery-3.3.1.min.js"></script>
