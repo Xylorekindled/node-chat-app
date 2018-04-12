@@ -24,7 +24,7 @@ socket.on('newMessage', function (message) {
 });
 
 socket.on('newLocationMessage', function (position, coords) {
-    var clickMapString = `http://maps.google.com/maps?q=loc:${coords.lat},${coords.lon}&z=18`
+    var clickMapString = `http://maps.google.com/maps?q=${coords.lat},${coords.lon}&z=18`
     var image = jQuery(`<br/><a href="${clickMapString}" target="_blank"><img src="${position.url}"/></a><br/>`);
 
     var formatedTime = moment(position.createdAt).format('h: mm a');
